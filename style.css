@@ -1,0 +1,163 @@
+/* === General Style === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #ffabcb, #474646);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* === Big Heart === */
+.big-heart {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  background-color: #fd3030;
+  transform: rotate(45deg);
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(255, 100, 150, 0.4);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.big-heart::before,
+.big-heart::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-color: #fd3030;
+  border-radius: 50%;
+}
+
+.big-heart::before {
+  top: -100px;
+  left: 0;
+}
+
+.big-heart::after {
+  left: -100px;
+  top: 0;
+}
+
+/* === Text in the Heart === */
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 200px; /* biar teks lebih panjang ke samping */
+  text-align: center;
+  white-space: nowrap; /* pastikan teks gak turun ke bawah */
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  z-index: 5;
+}
+
+
+
+/* === Floating Effect === */
+@keyframes float {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(-15px); }
+}
+
+/* === Falling Hearts === */
+.heart {
+  position: absolute;
+  color: #fd3030;
+  font-size: 30px;
+  top: -10px;
+  animation: fall linear forwards;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(255, 50, 100, 0.5));
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+/* === Glow Effect when Clicked === */
+.big-heart.glow {
+  animation: glowPulse 2s ease-out;
+  box-shadow: 0 0 50px 25px rgba(255, 80, 150, 0.6),
+              inset 0 0 35px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes glowPulse {
+  0% {
+    transform: rotate(45deg) scale(1);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg) scale(1.2);
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* === Exploding Hearts === */
+.explode-heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color:#fd3030;
+  transform: rotate(45deg);
+  animation: explode 1s ease-out forwards;
+  opacity: 0.9;
+  z-index: 3;
+}
+
+.explode-heart::before,
+.explode-heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: inherit;
+  border-radius: 50%;
+}
+
+.explode-heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.explode-heart::after {
+  left: 10px;
+  top: 0;
+}
+
+@keyframes explode {
+  0% {
+    transform: rotate(45deg) scale(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(45deg) translate(var(--x), var(--y)) scale(1.3);
+    opacity: 0;
+  }
+}
