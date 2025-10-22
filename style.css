@@ -18,8 +18,8 @@ body {
 /* === Big Heart === */
 .big-heart {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 90px;
+  height: 90px;
   background-color: #fd3030;
   transform: rotate(45deg);
   animation: float 3s ease-in-out infinite;
@@ -32,8 +32,8 @@ body {
 .big-heart::after {
   content: "";
   position: absolute;
-  width: 90px;
-  height: 90px;
+  width: 200px;
+  height: 200px;
   background-color: #fd3030;
   border-radius: 50%;
 }
@@ -161,4 +161,5 @@ body {
     opacity: 0;
   }
 }
+
 
